@@ -10,6 +10,7 @@ class PinsController < ApplicationController
   # GET /pins/1
   # GET /pins/1.json
   def show
+    @pin = Pin.find params[:id] #-> or Pin.first
   end
 
   # GET /pins/new
@@ -22,24 +23,21 @@ class PinsController < ApplicationController
   end
 
   # POST /pins
-  # POST /pins.json
   def create
     @pin = Pin.new(pin_params)
-
-    if @pin.save
+      if @pin.save
         redirect_to @pin, notice: 'Pin was successfully created.' 
     else
-        render action: 'new'
+        render :new
     end
   end
 
   # PATCH/PUT /pins/1
-  # PATCH/PUT /pins/1.json
-  def update
+ def update
       if @pin.update(pin_params)
         redirect_to @pin, notice: 'Pin was successfully updated.'
       else
-        render action: 'edit'
+        render :edit
       end
   end
 
