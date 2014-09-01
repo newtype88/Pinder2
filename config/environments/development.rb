@@ -37,4 +37,7 @@ Rails.application.configure do
 
 # Required for Heroku
 config.action_mailer.default_url_options = { :host => 'http://127.0.0.1:3000/'}
+
+#Image Processor
+Paperclip.options[:command_path] = "/c/Program Files/ImageMagick-6.8.9-Q16/"
 end
